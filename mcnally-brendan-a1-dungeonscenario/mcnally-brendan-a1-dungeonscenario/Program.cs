@@ -20,7 +20,7 @@ float playerhealth = 100f;
 
 Console.WriteLine();
 Console.WriteLine($" Hopefully you chose wise! You have {gold} gold!");
-Console.WriteLine("Type to continue...");
+Console.WriteLine("Please type to continue...");
 Console.WriteLine();
 Console.ReadLine();
 
@@ -94,26 +94,47 @@ if (playeranswer1 == "1")
     string option1answer = Console.ReadLine();
 
 
-
-
-
-
     if (option1answer == "1")
     {
         spiderhealth -= sworddamage;
-
+        //all of these console.writeline(); are to space out the program in the terminal and make it more readable for the user.
+        Console.WriteLine();
         Console.WriteLine("You sprint and quickly slash several of the Spider's Legs!");
         Console.WriteLine();
         Console.WriteLine($"The Spider now has {spiderhealth} health!");
         Console.WriteLine();
         Console.WriteLine("Type to continue!");
         Console.ReadLine();
+        
+//Question 2 for 'option1answer'
+        Console.WriteLine();
+        Console.WriteLine("The Spider is furious! It charges straight for you! What do you do?");
+        Console.WriteLine();
+        Console.WriteLine(" 1. Stick your sword out and Pray 2. Dodge! ");
+        Console.WriteLine();
+        string question2answer = Console.ReadLine();
+        if (question2answer == "1")
+        {
+            Console.WriteLine();
+            Console.WriteLine("You stick your sword out and pray as the Spider charges right at you showing its disgusting 8 eyes and venomous fangs!");
+            Console.WriteLine();
+            Console.WriteLine("In the blink of an eye your sword pierces through the front of the spider");
+            Console.WriteLine();
+            Console.WriteLine("Its lifeless body falls infront of you... But you notice a sharp pain coming from your forearm...");
+            Console.WriteLine();
+            Console.WriteLine("Please type to continue");
+            Console.ReadLine();
+            Console.WriteLine("You look down and see a fang deep in your forearm...");
+            Console.WriteLine();
+            Console.WriteLine("You pull out the spider-fang and feel its venom rushing through your body...");
+            Console.WriteLine();
+            Console.WriteLine("Please type to continue");
+            Console.WriteLine();
+            Console.WriteLine("A Mysterious figure approaches out of the darkness...");
+            Console.WriteLine();
+            Console.WriteLine(""
+        }
     }
-
-
-
-
-
 
 
     else if (playeranswer1 == "2")
@@ -123,6 +144,29 @@ if (playeranswer1 == "1")
         Console.WriteLine();
         playerhealth -= 10.5f;
         Console.WriteLine($"You now have {playerhealth} health!");
+
+        int daggerdamage = 100;
+
+        Console.WriteLine();
+        Console.WriteLine("After getting hit by the Spider you see a Dagger entangled in a web next to you");
+
+        Console.WriteLine();
+
+        string question2 = "1. Fight 2. Run \n Enter 1. or  2.";
+        Console.WriteLine();
+        Console.WriteLine($"{question2}");
+        Console.WriteLine();
+        string question1response = Console.ReadLine();
+
+        if (question1response == "1")
+        {
+            Console.WriteLine();
+            spiderhealth -= daggerdamage;
+            Console.WriteLine("You hit the Spider with your dagger and slash one of its hairy legs open!");
+            Console.WriteLine();
+            Console.WriteLine($"The Spider now has {spiderhealth} health!");
+
+        }
     }
     else
     {
