@@ -1,7 +1,4 @@
-﻿
-using System.Security.Principal;
-
-// Introduction to the game
+﻿// Introduction to the game
 Console.WriteLine("Welcome to the game...");
 Console.WriteLine("Please enter your Username below");
 
@@ -10,7 +7,7 @@ Console.WriteLine("Please enter your Username below");
 Console.WriteLine();
 string playername = Console.ReadLine();
 Console.WriteLine();
-Console.WriteLine($"Interesting... {playername} now tell me.. If you had to choose a number right now ... What would it be?");
+Console.WriteLine($"Interesting {playername} now tell me.. If you had to choose a number right now ... What would it be?");
 Console.WriteLine();
 
 
@@ -168,19 +165,29 @@ if (playeranswer1 == "1")
                 Console.WriteLine();
                 Console.WriteLine($"Heres your score.......:{score}");
                 Console.WriteLine();
-                Console.WriteLine($"Did you Surive:........:{alive}");
+                Console.WriteLine($"Did you Surive:........:{!alive}");
                 Console.WriteLine();
                 Console.WriteLine("Thanks for playing!");
             }
 
-
+            // Unlucky Ending
             else
             {
+                //
+                bool spider2 = spiderhealth <= 0;
+                int score = gold * gold;
                 Console.WriteLine();
                 Console.Write($"It seems {gold} might not be so lucky... You are unable to afford the Antidote");
                 Console.WriteLine();
                 playerhealth -= 10000;
 
+                Console.WriteLine($"Did you kill the Spider:{spider}");
+                Console.WriteLine();
+                Console.WriteLine($"Heres your score.......:{score}");
+                Console.WriteLine();
+                Console.WriteLine($"Did you Surive:........:{alive}");
+                Console.WriteLine();
+                Console.WriteLine("Thanks for playing!");
             }
         }
     }
@@ -204,6 +211,7 @@ else if (playeranswer1 == "2")
     Console.WriteLine();
     string question1response = Console.ReadLine();
 
+
     if (question1response == "1")
     {
         spiderhealth2 -= daggerdamage;
@@ -213,13 +221,77 @@ else if (playeranswer1 == "2")
         Console.WriteLine();
         Console.WriteLine($"The Spider now has {spiderhealth2} health!");
         Console.WriteLine();
-        Console.WriteLine("You stand to the side of the giant Arachnid as its legs ");
+        Console.WriteLine("You stand to the side of the giant Arachnid as its legs begin to wobble ");
+
+
+        Console.WriteLine();
+        Console.WriteLine("You look up to the beast... Its Now or Never! ");
+        Console.WriteLine();
+        Console.WriteLine(" 1. Attack the Stomach 2. Scream and Run in Circles ");
+        Console.WriteLine();
+        string question2response = Console.ReadLine();
+
+        if (question2response == "1")
+        {
+            spiderhealth2 -= 1000;
+            Console.WriteLine();
+            Console.WriteLine("You dive underneath the beast and Swing your sword with all your might into the Spiders stomach!");
+            Console.WriteLine();
+            Console.WriteLine("The Spider almost falls untop of you but you swiftly move away before it can.");
+            Console.WriteLine();
+            Console.WriteLine("You notice a figure approaching out of the darkness...");
+            Console.WriteLine();
+            Console.WriteLine("Please type Enter to continue");
+            Console.ReadLine();
+
+            Console.WriteLine();
+            Console.WriteLine("I see you have completed your first test... ");
+            Console.WriteLine();
+            Console.WriteLine("Your bravery deserves a reward...");
+            Console.WriteLine();
+            Console.WriteLine("Take these coins, Traveller.. They could be of great use to you on the way");
+            int addedcoins = 25;
+            addedcoins += gold;
+            Console.WriteLine($"You Gained {addedcoins} coins!");
+            Console.WriteLine();
+            Console.WriteLine($"You now have {gold} gold!");
+            Console.WriteLine();
+            Console.WriteLine("I'll see you on the next adventure...");
+            Console.WriteLine();
+            Console.WriteLine("The Mysterious Figure Vanishes");
+
+            int score = gold * gold;
+            bool isspideralive = spiderhealth2 <= 0;
+            bool isplayeralive = playerhealth <= 0;
+            Console.WriteLine();
+            Console.WriteLine("You Survived!");
+            Console.WriteLine();
+            Console.WriteLine($"Your Score was..........:{score}");
+            Console.WriteLine();
+            Console.WriteLine($"Did you kill the Spider?:{isspideralive}");
+            Console.WriteLine();
+            Console.WriteLine($"Did you survive?........:{!isplayeralive}");
+
+
+        
+        }
+        else if (question2response == "2")
+        {
+            Console.WriteLine();
+            Console.WriteLine("You Start manically screaming and sprinting in circles around the Spider!");
+            Console.WriteLine();
+            Console.WriteLine("The Spider is startled by your Actions and Scurrys back into its den!");
+            Console.WriteLine();
+            Console.WriteLine("A Mysterious Figure approaches");
+            Console.WriteLine()
 
 
     }
     else if (question1response == "2")
     {
 
+        // Option 2 Dialogue
+        Console.WriteLine();
         Console.WriteLine("You try to Run again but the Spider Jumps on top of you!");
         Console.WriteLine();
         Console.WriteLine("You manage to wiggle out and escape! But your cornered...");
@@ -230,7 +302,7 @@ else if (playeranswer1 == "2")
         Console.WriteLine();
         Console.ReadLine();
 
-
+        // Oh boy! Lets show this user that the Spider isn't playing games...
         Console.WriteLine();
         Console.WriteLine("All 8 eyes focus upon you.. drool slathering from its disgusting hairy mouth...");
         Console.WriteLine();
@@ -248,16 +320,16 @@ else if (playeranswer1 == "2")
         //Final Stats for this Choice path
 
         int score = gold * gold;
-        bool spideralive = spiderhealth2 <= 0;
-        bool alive = playerhealth <= 0;
+        bool isspideralive = spiderhealth2 <= 0;
+        bool isplayeralive = playerhealth <= 0;
         Console.WriteLine();
         Console.WriteLine("You Died!");
         Console.WriteLine();
         Console.WriteLine($"Your Score was..........:{score}");
         Console.WriteLine();
-        Console.WriteLine($"Did you kill the Spider?:{spideralive}");
+        Console.WriteLine($"Did you kill the Spider?:{isspideralive}");
         Console.WriteLine();
-        Console.WriteLine($"Did you survive?........:{alive}");
+        Console.WriteLine($"Did you survive?........:{isplayeralive}");
 
     }
 }
