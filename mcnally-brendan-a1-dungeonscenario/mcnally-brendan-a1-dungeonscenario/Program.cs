@@ -8,27 +8,27 @@ Console.WriteLine("Please enter your Username below");
 
 // Getting Players username
 Console.WriteLine();
-string playername = Console.ReadLine();
+string playerName = Console.ReadLine();
 Console.WriteLine();
-Console.WriteLine($"Interesting {playername} now tell me.. If you had to choose a number right now ... What would it be?");
+Console.WriteLine($"Interesting {playerName} now tell me.. If you had to choose a number right now ... What would it be?");
 Console.WriteLine();
 
 
 // Getting Gold amount aka your lucky number! 
-string input = Console.ReadLine();
-int gold = int.Parse(input);
-float playerhealth = 100f;
+string playerInput = Console.ReadLine();
+int playerGold = int.Parse(playerInput);
+float playerHealth = 100f;
 
 //All of the Console.Writeline(); are used for spacing our text in the terminal and making it more legible 
 Console.WriteLine();
-Console.WriteLine($" Hopefully you chose wise! You have {gold} gold!");
+Console.WriteLine($" Hopefully you chose wise! You have {playerGold} gold!");
 Console.WriteLine("Please press Enter to continue...");
 Console.WriteLine();
 Console.ReadLine();
 
 // Health Information 
 Console.WriteLine();
-Console.WriteLine($"Before you start... Here is your current health stat ---> {playerhealth} \n As you go along your adventure you might encounter scenarios that could make you lose that health");
+Console.WriteLine($"Before you start... Here is your current health stat ---> {playerHealth} \n As you go along your adventure you might encounter scenarios that could make you lose that health");
 Console.WriteLine();
 
 
@@ -53,38 +53,42 @@ Console.WriteLine("Enter 1 or 2");
 Console.WriteLine();
 
 
-string playeranswer1 = Console.ReadLine();
+string playerAnswer1 = Console.ReadLine();
 Console.WriteLine();
 
 // Choice 1
-if (playeranswer1 == "1")
+if (playerAnswer1 == "1")
 {
     Console.WriteLine("You grab the sword and ready yourself to attack.");
 
     // Sword Damage and Spider Health.
-    int sworddamage = 200;
-    int spiderhealth = 400;
+    int swordDamage = 200;
+    int spiderHealth = 400;
 
     // Spider Approaches
     Console.WriteLine();
-    Console.WriteLine("The Spider approaches... Standing tall above you it readys itself to attack!");
+    Console.WriteLine("The Spider approaches... Standing tall above you it gears up to attack!");
     Console.WriteLine();
+    Console.WriteLine($"The Spider has {spiderHealth} Health!");
+    Console.WriteLine();
+
 
     // Attack the Spider's legs or stomach
     string question1 = "Where do you Attack?! \n 1. 'Legs' 2. 'Stomach' ";
     Console.WriteLine($"{question1}");
     Console.WriteLine();
-    string option1answer = Console.ReadLine();
+    string option1Answer = Console.ReadLine();
+
 
     // Answer 1  Going for the Legs
-    if (option1answer == "1")
+    if (option1Answer == "1")
     {
-        spiderhealth -= sworddamage;
+        spiderHealth -= swordDamage;
         //all of these console.writeline(); are to space out the program in the terminal and make it more readable for the user.
         Console.WriteLine();
         Console.WriteLine("You sprint and quickly slash several of the Spider's Legs!");
         Console.WriteLine();
-        Console.WriteLine($"The Spider now has {spiderhealth} health!");
+        Console.WriteLine($"The Spider now has {spiderHealth} health!");
         Console.WriteLine();
         Console.WriteLine("Please press Enter to continue!");
         Console.WriteLine();
@@ -108,7 +112,7 @@ if (playeranswer1 == "1")
             Console.WriteLine();
             Console.WriteLine("In the blink of an eye your sword pierces through the front of the spider");
             Console.WriteLine();
-            spiderhealth -= 10000;
+            spiderHealth -= 10000;
             Console.WriteLine("Its lifeless body falls infront of you... But you notice a sharp pain coming from your forearm...");
             Console.WriteLine();
             Console.WriteLine("Please press Enter to continue");
@@ -124,17 +128,24 @@ if (playeranswer1 == "1")
             Console.WriteLine();
 
             // Not enough Gold
-            if (gold <= 25)
+            if (playerGold <= 25)
             {
+
+
                 //Sorry you didn't have enough gold!
                 Console.WriteLine();
                 Console.WriteLine("You do not have enough Gold traveller... Looks like your fate has been sealed...");
                 Console.WriteLine();
+
+
                 // Here we are getting the Final Stats for the player 
-                bool spider = spiderhealth <= 0;
-                int score = gold * gold;
-                bool isplayeralive = playerhealth <= 0;
-                playerhealth -= 10000;
+                bool spider = spiderHealth <= 0;
+                bool isplayeralive = playerHealth <= 0;
+                int score = playerGold * playerGold;
+
+
+                //Player Died because they couldn't afford the antidote so we subtract health points
+                playerHealth -= 10000;
 
 
                 Console.WriteLine();
@@ -147,17 +158,18 @@ if (playeranswer1 == "1")
                 Console.WriteLine("Thanks for playing!");
             }
 
+
             // Enough Gold
-            else if (gold >= 26)
+            else if (playerGold >= 26)
             {
-                gold -= 26;
+                playerGold -= 26;
                 Console.WriteLine();
-                Console.WriteLine($"You Had enough for the Antidote! you now have {gold} Gold!");
+                Console.WriteLine($"You Had enough for the Antidote! you now have {playerGold} Gold!");
                 Console.WriteLine();
 
-                bool spider = spiderhealth <= 0;
-                bool isplayeralive = playerhealth <= 0;
-                int score = gold * gold;
+                bool spider = spiderHealth <= 0;
+                bool isplayeralive = playerHealth <= 0;
+                int score = playerGold * playerGold;
                 //Console.WriteLine(); is to space out our text on the terminal and make it more legible
                 Console.WriteLine();
                 Console.WriteLine($"Did you kill the Spider:{spider}");
@@ -178,7 +190,7 @@ if (playeranswer1 == "1")
             Console.WriteLine("You try to dodge the spider But it gets you with its web! ");
             Console.WriteLine();
             Console.WriteLine("It Jumps on top of you and starts sinking its fangs deep into your stomach!");
-            playerhealth -= 1000;
+            playerHealth -= 1000;
             Console.WriteLine("Everything fades to black as the venom knocks you out...");
             Console.WriteLine("Please Press Enter to Continue"); 
             Console.ReadLine();
@@ -192,9 +204,9 @@ if (playeranswer1 == "1")
 
             
             //Final Stats
-            bool spider = spiderhealth <= 0; 
-            bool isplayeralive = playerhealth <= 0;
-            int score = gold * gold;
+            bool spider = spiderHealth <= 0; 
+            bool isplayeralive = playerHealth <= 0;
+            int score = playerGold * playerGold;
         
             Console.WriteLine();
             Console.WriteLine($"Did you kill the Spider:{spider}");
@@ -209,11 +221,11 @@ if (playeranswer1 == "1")
     }
 
     // Choosing to Dodge the Spider
-    else if (option1answer == "2")
+    else if (option1Answer == "2")
     {
 
         // Slicing the Spiders Stomach
-        spiderhealth -= 1000;
+        spiderHealth -= 1000;
         Console.WriteLine();
         Console.WriteLine("You dive underneath the spider slashing through its stomach... GUTS flying all over the place!");
         Console.WriteLine();
@@ -227,18 +239,19 @@ if (playeranswer1 == "1")
         Console.ReadLine();
 
 
-        //final stats
-        bool spider = spiderhealth <= 0;
-        int score = gold * gold;
-        bool isplayeralive = playerhealth <= 0;
+        //Do Final stat math
+        bool isspiderAlive = spiderHealth <= 0;
+        bool isplayerAlive = playerHealth <= 0;
+        int finalScore = playerGold * playerGold;
 
 
+        //Final Stats Dialogue
         Console.WriteLine();
-        Console.WriteLine($"Did you kill the Spider:{spider}");
+        Console.WriteLine($"Did you kill the Spider:{isspiderAlive}");
         Console.WriteLine();
-        Console.WriteLine($"Heres your score.......:{score}");
+        Console.WriteLine($"Heres your score.......:{finalScore}");
         Console.WriteLine();
-        Console.WriteLine($"Did you Surive:........:{!isplayeralive}");
+        Console.WriteLine($"Did you Surive:........:{!isplayerAlive}");
         Console.WriteLine();
         Console.WriteLine("Thanks for playing!");
       
@@ -252,18 +265,21 @@ if (playeranswer1 == "1")
 
 
         //Final Stats
-        bool spider = spiderhealth <= 0;
-        int score = gold * gold;
-        bool isplayeralive = playerhealth <= 0;
+        bool isspiderAlive = spiderHealth <= 0;
+        bool isplayeralive = playerHealth <= 0;
+        int finalScore = playerGold * playerGold;
+
+
         Console.WriteLine();
-        Console.Write($"It seems {gold} might not be so lucky... You are unable to afford the Antidote");
+        Console.Write($"It seems {playerGold} might not be so lucky... You are unable to afford the Antidote");
         Console.WriteLine();
-        playerhealth -= 10000;
+        playerHealth -= 10000;
+
 
         // Final Stats Written out to the User
-        Console.WriteLine($"Did you kill the Spider:{spider}");
+        Console.WriteLine($"Did you kill the Spider:{isspiderAlive}");
         Console.WriteLine();
-        Console.WriteLine($"Heres your score.......:{score}");
+        Console.WriteLine($"Heres your score.......:{finalScore}");
         Console.WriteLine();
         Console.WriteLine($"Did you Surive:........:{isplayeralive}");
         Console.WriteLine();
@@ -274,36 +290,36 @@ if (playeranswer1 == "1")
 
 
 //If Player chooses to Run
-else if (playeranswer1 == "2")
+else if (playerAnswer1 == "2")
 {
-    int daggerdamage = 100;
-    int spiderhealth2 = 400;
+    int daggerDamage = 100;
+    int spiderHealth2 = 400;
 
     // Start of Scenario 2
     Console.WriteLine("After getting hit by the Spider you see a Dagger entangled in a web next to you");
     Console.WriteLine();
 
     // Using some Interpolation for fun here :) 
-    string question2 = "1. 'Fight' 2. 'Run'";
-    Console.WriteLine($"{question2}");
+    string questionTwo = "1. 'Fight' 2. 'Run'";
+    Console.WriteLine($"{questionTwo}");
     Console.WriteLine();
     Console.WriteLine("Enter 1 or 2");
     Console.WriteLine();
-    string question1response = Console.ReadLine();
+    string question1Response = Console.ReadLine();
 
 
-    if (question1response == "1")
+    if (question1Response == "1")
     {
 
 
-        spiderhealth2 -= daggerdamage;
+        spiderHealth2 -= daggerDamage;
 
 
         // Player stabs the Spider
         Console.WriteLine();
         Console.WriteLine("You hit the Spider with your dagger and slash one of its hairy legs open!");
         Console.WriteLine();
-        Console.WriteLine($"The Spider now has {spiderhealth2} health!");
+        Console.WriteLine($"The Spider now has {spiderHealth2} health!");
         Console.WriteLine();
         Console.WriteLine("You stand to the side of the giant Arachnid as its legs begin to wobble ");
 
@@ -313,14 +329,14 @@ else if (playeranswer1 == "2")
         Console.WriteLine();
         Console.WriteLine(" 1. 'Attack the Stomach' 2. 'Scream and Run in Circles' ");
         Console.WriteLine();
-        string question2response = Console.ReadLine();
+        string question2Response = Console.ReadLine();
 
         // Attack the Stomach Option
-        if (question2response == "1")
+        if (question2Response == "1")
         {
 
             // Killing the Spider
-            spiderhealth2 -= 1000;
+            spiderHealth2 -= 1000;
             Console.WriteLine();
             Console.WriteLine("You dive underneath the beast and Swing your sword with all your might into the Spiders stomach!");
             Console.WriteLine();
@@ -340,45 +356,45 @@ else if (playeranswer1 == "2")
             Console.WriteLine("Take these coins, Traveller.. They could be of great use to you on the way");
 
             // Adding the coins to the Travellers piggy bank! 
-            int addedcoins = 25;
-            addedcoins += gold;
+            int addedCoins = 25;
+            addedCoins += playerGold;
 
             // Add the Coins to the Purse
             Console.WriteLine();
-            Console.WriteLine($"You Gained {addedcoins} coins!");
+            Console.WriteLine($"You Gained {addedCoins} coins!");
             Console.WriteLine();
-            Console.WriteLine($"You now have {gold} gold!");
+            Console.WriteLine($"You now have {playerGold} gold!");
             Console.WriteLine();
             Console.WriteLine("I'll see you on the next adventure...");
             Console.WriteLine();
             Console.WriteLine("The Mysterious Figure Vanishes");
 
             // Final Stats display
-            int score = gold * gold;
-            bool isspideralive = spiderhealth2 <= 0;
-            bool isplayeralive = playerhealth <= 0;
+            int finalScore = playerGold * playerGold;
+            bool isspiderAlive = spiderHealth2 <= 0;
+            bool isplayerAlive = playerHealth <= 0;
             Console.WriteLine();
             Console.WriteLine("You Survived!");
             Console.WriteLine();
-            Console.WriteLine($"Your Score was..........:{score}");
+            Console.WriteLine($"Your Score was..........:{finalScore}");
             Console.WriteLine();
-            Console.WriteLine($"Did you kill the Spider?:{isspideralive}");
+            Console.WriteLine($"Did you kill the Spider?:{isspiderAlive}");
             Console.WriteLine();
-            Console.WriteLine($"Did you survive?........:{!isplayeralive}");
+            Console.WriteLine($"Did you survive?........:{!isplayerAlive}");
 
 
         }
 
         // Run in circles and scream??
-        else if (question2response == "2")
+        else if (question2Response == "2")
         {
 
             // Scream!!!
             Console.WriteLine("Scream!!!");
             Console.WriteLine();
-            string scream2 = Console.ReadLine();
+            string playerScream2 = Console.ReadLine();
             Console.WriteLine();
-            Console.WriteLine($"{scream2} {scream2} {scream2} {scream2} {scream2} {scream2} {scream2} {scream2}");
+            Console.WriteLine($"{playerScream2} {playerScream2} {playerScream2} {playerScream2} {playerScream2} {playerScream2} {playerScream2} {playerScream2}");
 
             // Scream Scenario
             Console.WriteLine();
@@ -393,22 +409,22 @@ else if (playeranswer1 == "2")
             Console.WriteLine("Your life is your gift... Take it as you wish, I'll see you on the next adventure.");
 
             //Final Stats
-            int score = gold * gold;
-            bool isspideralive = spiderhealth2 <= 0;
-            bool isplayeralive = playerhealth <= 0;
+            int finalScore = playerGold * playerGold;
+            bool isspiderAlive = spiderHealth2 <= 0;
+            bool isplayerAlive = playerHealth <= 0;
             Console.WriteLine();
             Console.WriteLine("You Survived!");
             Console.WriteLine();
-            Console.WriteLine($"Your Score was..........:{score}");
+            Console.WriteLine($"Your Score was..........:{finalScore}");
             Console.WriteLine();
-            Console.WriteLine($"Did you kill the Spider?:{isspideralive}");
+            Console.WriteLine($"Did you kill the Spider?:{isspiderAlive}");
             Console.WriteLine();
-            Console.WriteLine($"Did you survive?........:{!isplayeralive}");
+            Console.WriteLine($"Did you survive?........:{!isplayerAlive}");
 
 
         }
     }
-    else if (question1response == "2")
+    else if (question1Response == "2")
     {
 
         // Option 2 Dialogue
@@ -423,6 +439,7 @@ else if (playeranswer1 == "2")
         Console.WriteLine();
         Console.ReadLine();
 
+
         // Oh boy! Lets show this user that the Spider isn't playing games...
         Console.WriteLine();
         Console.WriteLine("All 8 eyes focus upon you.. drool slathering from its disgusting hairy mouth...");
@@ -433,24 +450,24 @@ else if (playeranswer1 == "2")
         Console.WriteLine();
 
 
-        string scream = Console.ReadLine();
+        string playerScream = Console.ReadLine();
         Console.WriteLine();
-        Console.WriteLine($"{scream} {scream}  {scream}  {scream}  {scream}  {scream}");
+        Console.WriteLine($"{playerScream} {playerScream}  {playerScream}  {playerScream}  {playerScream}  {playerScream}");
 
 
         //Final Stats for this Choice path
 
-        int score = gold * gold;
-        bool isspideralive = spiderhealth2 <= 0;
-        bool isplayeralive = playerhealth <= 0;
+        int finalScore = playerGold * playerGold;
+        bool isspiderAlive = spiderHealth2 <= 0;
+        bool isplayerAlive = playerHealth <= 0;
         Console.WriteLine();
         Console.WriteLine("You Died!");
         Console.WriteLine();
-        Console.WriteLine($"Your Score was..........:{score}");
+        Console.WriteLine($"Your Score was..........:{finalScore}");
         Console.WriteLine();
-        Console.WriteLine($"Did you kill the Spider?:{isspideralive}");
+        Console.WriteLine($"Did you kill the Spider?:{isspiderAlive}");
         Console.WriteLine();
-        Console.WriteLine($"Did you survive?........:{isplayeralive}");
+        Console.WriteLine($"Did you survive?........:{isplayerAlive}");
 
     }
     }
