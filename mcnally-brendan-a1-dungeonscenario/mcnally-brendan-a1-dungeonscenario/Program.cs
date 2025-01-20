@@ -76,7 +76,7 @@ if (playeranswer1 == "1")
     Console.WriteLine();
     string option1answer = Console.ReadLine();
 
-    // Answer 1 for Question1
+    // Answer 1  Going for the Legs
     if (option1answer == "1")
     {
         spiderhealth -= sworddamage;
@@ -97,6 +97,8 @@ if (playeranswer1 == "1")
         Console.WriteLine(" 1. 'Stick your sword out and Pray' 2. 'Dodge!' ");
         Console.WriteLine();
         string question2answer = Console.ReadLine();
+
+        //Stick your sword out and Pray?!
         if (question2answer == "1")
         {
 
@@ -113,16 +115,18 @@ if (playeranswer1 == "1")
             Console.WriteLine();
             Console.ReadLine();
 
+            // Ouch, A spider fang definitely hurts.
             Console.WriteLine("You pull a spider fang from deep in your forearm and feel its venom rushing through you.");
             Console.WriteLine();
             Console.WriteLine("A mysterious figure offers you an Antidote.. But it will cost you.. Do you have enough gold?");
             Console.WriteLine();
             if (gold <= 25)
             {
+                //Sorry you didn't have enough gold!
                 Console.WriteLine();
                 Console.WriteLine("You do not have enough Gold traveller... Looks like your fate has been sealed...");
                 Console.WriteLine();
-
+// Here we are getting the Final Stats for the player 
                 bool spider = spiderhealth <= 0;
                 int score = gold * gold;
                 bool isplayeralive = playerhealth <= 0;
@@ -138,26 +142,32 @@ if (playeranswer1 == "1")
                 Console.WriteLine("Thanks for playing!");
             }
         }
-
+// Trying to Dodge the Spider, Definitely more logical! But that Doesn't mean it'll help you!
         else if (question2answer == "2")
         {
+            //Trying to Dodge the Spider
             Console.WriteLine();
             Console.WriteLine("You try to dodge the spider But it gets you with its web! ");
             Console.WriteLine();
             Console.WriteLine("It Jumps on top of you and starts sinking its fangs deep into your stomach!");
             playerhealth -= 1000;
             Console.WriteLine("Everything fades to black as the venom knocks you out...");
+            Console.WriteLine("Please Press Enter to Continue"); 
+            Console.ReadLine();
+
+            // End Game Message
             Console.WriteLine();
             Console.WriteLine("You hear a voice in the darkness");
             Console.WriteLine();
             Console.WriteLine("You tried your best... Traveller");
             Console.WriteLine();
 
-            //final stats
-            bool spider = spiderhealth <= 0;
-            int score = gold * gold;
+            
+            //Final Stats
+            bool spider = spiderhealth <= 0; 
             bool isplayeralive = playerhealth <= 0;
-
+            int score = gold * gold;
+        
             Console.WriteLine();
             Console.WriteLine($"Did you kill the Spider:{spider}");
             Console.WriteLine();
@@ -169,8 +179,12 @@ if (playeranswer1 == "1")
 
         }
     }
+
+    // Choosing to Dodge the Spider
     else if (option1answer == "2")
     {
+
+        // Slicing the Spiders Stomach
         spiderhealth -= 1000;
         Console.WriteLine();
         Console.WriteLine("You dive underneath the spider slashing through its stomach... GUTS flying all over the place!");
