@@ -19,7 +19,7 @@ string input = Console.ReadLine();
 int gold = int.Parse(input);
 float playerhealth = 100f;
 
-
+//All of the Console.Writeline(); are used for spacing our text in the terminal and making it more legible 
 Console.WriteLine();
 Console.WriteLine($" Hopefully you chose wise! You have {gold} gold!");
 Console.WriteLine("Please press Enter to continue...");
@@ -136,6 +136,7 @@ if (playeranswer1 == "1")
                 bool isplayeralive = playerhealth <= 0;
                 playerhealth -= 10000;
 
+
                 Console.WriteLine();
                 Console.WriteLine($"Did you kill the Spider:{spider}");
                 Console.WriteLine();
@@ -155,10 +156,9 @@ if (playeranswer1 == "1")
                 Console.WriteLine();
 
                 bool spider = spiderhealth <= 0;
-                int score = gold * gold;
                 bool isplayeralive = playerhealth <= 0;
-                
-
+                int score = gold * gold;
+                //Console.WriteLine(); is to space out our text on the terminal and make it more legible
                 Console.WriteLine();
                 Console.WriteLine($"Did you kill the Spider:{spider}");
                 Console.WriteLine();
@@ -365,7 +365,6 @@ else if (playeranswer1 == "2")
             Console.WriteLine($"Did you kill the Spider?:{isspideralive}");
             Console.WriteLine();
             Console.WriteLine($"Did you survive?........:{!isplayeralive}");
-
 
 
         }
